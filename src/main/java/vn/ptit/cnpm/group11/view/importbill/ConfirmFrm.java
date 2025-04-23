@@ -37,6 +37,15 @@ public class ConfirmFrm extends javax.swing.JFrame {
         scrllPnlListProvider = new javax.swing.JScrollPane();
         tblProvider = new javax.swing.JTable();
         lblImportedBookTitleTable = new javax.swing.JLabel();
+        lblSaleOff = new javax.swing.JLabel();
+        lblSaleOffRes = new javax.swing.JLabel();
+        lblTotalAmount = new javax.swing.JLabel();
+        lblTotalAmountRes = new javax.swing.JLabel();
+        lblPaymentType = new javax.swing.JLabel();
+        lblPaymentTypeRes = new javax.swing.JLabel();
+        lblNote = new javax.swing.JLabel();
+        scrllPnlNote = new javax.swing.JScrollPane();
+        txtNote = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,10 +75,12 @@ public class ConfirmFrm extends javax.swing.JFrame {
 
         btnCancel.setText("Huỷ");
 
+        lblWarehouseStaffName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblWarehouseStaffName.setText("Tên nhân viên kho lập hoá đơn");
 
         lblWarehouseStaffNameRes.setText("A");
 
+        lblProvider.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblProvider.setText("Thông tin nhà cung cấp");
 
         tblProvider.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -91,27 +102,53 @@ public class ConfirmFrm extends javax.swing.JFrame {
         });
         scrllPnlListProvider.setViewportView(tblProvider);
 
+        lblImportedBookTitleTable.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblImportedBookTitleTable.setText("Danh sách truyện nhập");
+
+        lblSaleOff.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSaleOff.setText("Giảm giá");
+
+        lblSaleOffRes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSaleOffRes.setText("0");
+
+        lblTotalAmount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblTotalAmount.setText("Tổng tiền");
+
+        lblTotalAmountRes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblTotalAmountRes.setText("450000");
+
+        lblPaymentType.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPaymentType.setText("Phương thức thanh toán");
+
+        lblPaymentTypeRes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPaymentTypeRes.setText("Chuyển khoản");
+
+        lblNote.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblNote.setText("Ghi chú");
+
+        txtNote.setColumns(20);
+        txtNote.setRows(5);
+        scrllPnlNote.setViewportView(txtNote);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblAddBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(411, 411, 411))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addComponent(btnPrint)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 445, Short.MAX_VALUE)
-                .addComponent(btnCancel)
-                .addGap(186, 186, 186))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrllPnlListProvider, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(scrllPnlImportedBookTitleList)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(242, 424, Short.MAX_VALUE)
+                .addComponent(lblAddBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(411, 411, 411))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(232, 232, 232)
+                .addComponent(btnPrint)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancel)
+                .addGap(186, 186, 186))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -124,7 +161,26 @@ public class ConfirmFrm extends javax.swing.JFrame {
                                 .addComponent(lblWarehouseStaffNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(lblImportedBookTitleTable, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblImportedBookTitleTable, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(160, 160, 160)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTotalAmount)
+                                    .addComponent(lblSaleOff, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(121, 121, 121))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNote)
+                                    .addComponent(lblPaymentType))
+                                .addGap(131, 131, 131)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrllPnlNote, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSaleOffRes, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotalAmountRes, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPaymentTypeRes, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,11 +200,27 @@ public class ConfirmFrm extends javax.swing.JFrame {
                 .addComponent(lblImportedBookTitleTable)
                 .addGap(11, 11, 11)
                 .addComponent(scrllPnlImportedBookTitleList, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSaleOff)
+                    .addComponent(lblSaleOffRes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotalAmount)
+                    .addComponent(lblTotalAmountRes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPaymentType)
+                    .addComponent(lblPaymentTypeRes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNote)
+                    .addComponent(scrllPnlNote, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrint)
                     .addComponent(btnCancel))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -194,12 +266,21 @@ public class ConfirmFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnPrint;
     private javax.swing.JLabel lblAddBookTitle;
     private javax.swing.JLabel lblImportedBookTitleTable;
+    private javax.swing.JLabel lblNote;
+    private javax.swing.JLabel lblPaymentType;
+    private javax.swing.JLabel lblPaymentTypeRes;
     private javax.swing.JLabel lblProvider;
+    private javax.swing.JLabel lblSaleOff;
+    private javax.swing.JLabel lblSaleOffRes;
+    private javax.swing.JLabel lblTotalAmount;
+    private javax.swing.JLabel lblTotalAmountRes;
     private javax.swing.JLabel lblWarehouseStaffName;
     private javax.swing.JLabel lblWarehouseStaffNameRes;
     private javax.swing.JScrollPane scrllPnlImportedBookTitleList;
     private javax.swing.JScrollPane scrllPnlListProvider;
+    private javax.swing.JScrollPane scrllPnlNote;
     private javax.swing.JTable tblImportedBookTitle;
     private javax.swing.JTable tblProvider;
+    private javax.swing.JTextArea txtNote;
     // End of variables declaration//GEN-END:variables
 }

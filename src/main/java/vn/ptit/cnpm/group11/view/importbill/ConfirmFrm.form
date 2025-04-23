@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -23,24 +23,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="lblAddBookTitle" min="-2" pref="197" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="411" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
-              <Component id="btnPrint" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="445" max="32767" attributes="0"/>
-              <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="scrllPnlListProvider" alignment="1" max="32767" attributes="0"/>
                   <Component id="scrllPnlImportedBookTitleList" max="32767" attributes="0"/>
               </Group>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="242" pref="424" max="32767" attributes="0"/>
+              <Component id="lblAddBookTitle" min="-2" pref="197" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="411" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+              <Component id="btnPrint" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
@@ -58,6 +58,32 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="lblImportedBookTitleTable" min="-2" pref="137" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTotalAmount" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSaleOff" min="-2" pref="64" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblNote" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPaymentType" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrllPnlNote" min="-2" pref="331" max="-2" attributes="0"/>
+                          <Component id="lblSaleOffRes" min="-2" pref="193" max="-2" attributes="0"/>
+                          <Component id="lblTotalAmountRes" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                          <Component id="lblPaymentTypeRes" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -82,12 +108,32 @@
               <Component id="lblImportedBookTitleTable" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Component id="scrllPnlImportedBookTitleList" min="-2" pref="335" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblSaleOff" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSaleOffRes" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblTotalAmount" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTotalAmountRes" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblPaymentType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPaymentTypeRes" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblNote" min="-2" max="-2" attributes="0"/>
+                  <Component id="scrllPnlNote" min="-2" pref="53" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnPrint" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -153,6 +199,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblWarehouseStaffName">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="T&#xea;n nh&#xe2;n vi&#xea;n kho l&#x1ead;p ho&#xe1; &#x111;&#x1a1;n"/>
       </Properties>
     </Component>
@@ -163,6 +212,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblProvider">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Th&#xf4;ng tin nh&#xe0; cung c&#x1ea5;p"/>
       </Properties>
     </Component>
@@ -242,8 +294,82 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblImportedBookTitleTable">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch truy&#x1ec7;n nh&#x1ead;p"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="lblSaleOff">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Gi&#x1ea3;m gi&#xe1;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSaleOffRes">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTotalAmount">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng ti&#x1ec1;n"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTotalAmountRes">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="450000"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPaymentType">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ph&#x1b0;&#x1a1;ng th&#x1ee9;c thanh to&#xe1;n"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPaymentTypeRes">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Chuy&#x1ec3;n kho&#x1ea3;n"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNote">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ghi ch&#xfa;"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="scrllPnlNote">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="txtNote">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
