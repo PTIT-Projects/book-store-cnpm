@@ -25,10 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scrllPnlListProvider" alignment="1" max="32767" attributes="0"/>
-                  <Component id="scrllPnlImportedBookTitleList" max="32767" attributes="0"/>
-              </Group>
+              <Component id="scrllPnlImportedBookTitleList" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="242" pref="424" max="32767" attributes="0"/>
@@ -48,10 +45,16 @@
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblProvider" min="-2" pref="137" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="lblWarehouseStaffName" min="-2" pref="176" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lblImportDate" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblWarehouseStaffName" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lblWarehouseStaffNameRes" min="-2" pref="176" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblWarehouseStaffNameRes" min="-2" pref="176" max="-2" attributes="0"/>
+                                  <Component id="lblImportDateRes" min="-2" pref="122" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -88,6 +91,7 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
+          <Component id="scrllPnlListProvider" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -100,10 +104,15 @@
                   <Component id="lblWarehouseStaffName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblWarehouseStaffNameRes" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblImportDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblImportDateRes" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="lblProvider" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-              <Component id="scrllPnlListProvider" min="-2" pref="115" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="scrllPnlListProvider" min="-2" pref="60" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblImportedBookTitleTable" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -202,7 +211,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="T&#xea;n nh&#xe2;n vi&#xea;n kho l&#x1ead;p ho&#xe1; &#x111;&#x1a1;n"/>
+        <Property name="text" type="java.lang.String" value="T&#xea;n nh&#xe2;n vi&#xea;n kho nh&#x1ead;p truy&#x1ec7;n:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWarehouseStaffNameRes">
@@ -358,6 +367,19 @@
     <Component class="javax.swing.JSpinner" name="spnSaleOff">
     </Component>
     <Component class="javax.swing.JTextField" name="txtPaymentMethod">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblImportDate">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Ng&#xe0;y nh&#x1ead;p truy&#x1ec7;n"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblImportDateRes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="11/4/2025"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

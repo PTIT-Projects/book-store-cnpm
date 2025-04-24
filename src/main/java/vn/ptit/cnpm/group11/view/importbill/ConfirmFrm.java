@@ -46,6 +46,8 @@ public class ConfirmFrm extends javax.swing.JFrame {
         txtNote = new javax.swing.JTextArea();
         spnSaleOff = new javax.swing.JSpinner();
         txtPaymentMethod = new javax.swing.JTextField();
+        lblImportDate = new javax.swing.JLabel();
+        lblImportDateRes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,7 +78,7 @@ public class ConfirmFrm extends javax.swing.JFrame {
         btnCancel.setText("Huỷ");
 
         lblWarehouseStaffName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblWarehouseStaffName.setText("Tên nhân viên kho lập hoá đơn");
+        lblWarehouseStaffName.setText("Tên nhân viên kho nhập truyện:");
 
         lblWarehouseStaffNameRes.setText("A");
 
@@ -124,15 +126,18 @@ public class ConfirmFrm extends javax.swing.JFrame {
         txtNote.setRows(5);
         scrllPnlNote.setViewportView(txtNote);
 
+        lblImportDate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblImportDate.setText("Ngày nhập truyện");
+
+        lblImportDateRes.setText("11/4/2025");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrllPnlListProvider, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(scrllPnlImportedBookTitleList)))
+                .addComponent(scrllPnlImportedBookTitleList))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(242, 424, Short.MAX_VALUE)
                 .addComponent(lblAddBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +155,13 @@ public class ConfirmFrm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblWarehouseStaffName, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblImportDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblWarehouseStaffName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(lblWarehouseStaffNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblWarehouseStaffNameRes, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblImportDateRes, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(lblImportedBookTitleTable, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,6 +185,7 @@ public class ConfirmFrm extends javax.swing.JFrame {
                             .addComponent(spnSaleOff, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPaymentMethod))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(scrllPnlListProvider, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,10 +196,14 @@ public class ConfirmFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblWarehouseStaffName)
                     .addComponent(lblWarehouseStaffNameRes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblImportDate)
+                    .addComponent(lblImportDateRes))
+                .addGap(25, 25, 25)
                 .addComponent(lblProvider)
-                .addGap(4, 4, 4)
-                .addComponent(scrllPnlListProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrllPnlListProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblImportedBookTitleTable)
                 .addGap(11, 11, 11)
@@ -259,6 +273,8 @@ public class ConfirmFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
     private javax.swing.JLabel lblAddBookTitle;
+    private javax.swing.JLabel lblImportDate;
+    private javax.swing.JLabel lblImportDateRes;
     private javax.swing.JLabel lblImportedBookTitleTable;
     private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblPaymentType;
