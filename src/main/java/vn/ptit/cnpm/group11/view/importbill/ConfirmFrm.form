@@ -78,11 +78,11 @@
                               <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="scrllPnlNote" min="-2" pref="331" max="-2" attributes="0"/>
-                          <Component id="lblSaleOffRes" min="-2" pref="193" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="scrllPnlNote" pref="331" max="32767" attributes="0"/>
                           <Component id="lblTotalAmountRes" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
-                          <Component id="lblPaymentTypeRes" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                          <Component id="spnSaleOff" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="txtPaymentMethod" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -111,24 +111,24 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSaleOff" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblSaleOffRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spnSaleOff" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblTotalAmount" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblTotalAmountRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTotalAmountRes" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPaymentType" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPaymentTypeRes" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPaymentMethod" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="lblNote" min="-2" max="-2" attributes="0"/>
                   <Component id="scrllPnlNote" min="-2" pref="53" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnPrint" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -308,14 +308,6 @@
         <Property name="text" type="java.lang.String" value="Gi&#x1ea3;m gi&#xe1;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblSaleOffRes">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblTotalAmount">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -338,14 +330,6 @@
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ph&#x1b0;&#x1a1;ng th&#x1ee9;c thanh to&#xe1;n"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPaymentTypeRes">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Chuy&#x1ec3;n kho&#x1ea3;n"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNote">
@@ -371,5 +355,9 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JSpinner" name="spnSaleOff">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPaymentMethod">
+    </Component>
   </SubComponents>
 </Form>

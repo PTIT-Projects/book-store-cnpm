@@ -43,8 +43,10 @@
                           <Component id="txtPublisher" min="-2" pref="281" max="-2" attributes="0"/>
                           <Component id="txtBookTitleName" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
                           <Component id="txtAuthor" alignment="0" min="-2" pref="281" max="-2" attributes="0"/>
-                          <Component id="txtPublicationYear" min="-2" pref="281" max="-2" attributes="0"/>
-                          <Component id="txtUnitPrice" min="-2" pref="281" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="spnUnitPrice" alignment="0" pref="101" max="32767" attributes="0"/>
+                              <Component id="spnPublicationYear" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -82,12 +84,12 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPublicationYear" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPublicationYear" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spnPublicationYear" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblUnitPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUnitPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spnUnitPrice" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -149,9 +151,9 @@
         <Property name="text" type="java.lang.String" value="&#x110;&#x1a1;n gi&#xe1;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPublicationYear">
+    <Component class="javax.swing.JSpinner" name="spnPublicationYear">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtUnitPrice">
+    <Component class="javax.swing.JSpinner" name="spnUnitPrice">
     </Component>
   </SubComponents>
 </Form>

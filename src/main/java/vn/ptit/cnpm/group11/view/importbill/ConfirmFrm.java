@@ -38,14 +38,14 @@ public class ConfirmFrm extends javax.swing.JFrame {
         tblProvider = new javax.swing.JTable();
         lblImportedBookTitleTable = new javax.swing.JLabel();
         lblSaleOff = new javax.swing.JLabel();
-        lblSaleOffRes = new javax.swing.JLabel();
         lblTotalAmount = new javax.swing.JLabel();
         lblTotalAmountRes = new javax.swing.JLabel();
         lblPaymentType = new javax.swing.JLabel();
-        lblPaymentTypeRes = new javax.swing.JLabel();
         lblNote = new javax.swing.JLabel();
         scrllPnlNote = new javax.swing.JScrollPane();
         txtNote = new javax.swing.JTextArea();
+        spnSaleOff = new javax.swing.JSpinner();
+        txtPaymentMethod = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -108,9 +108,6 @@ public class ConfirmFrm extends javax.swing.JFrame {
         lblSaleOff.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblSaleOff.setText("Giảm giá");
 
-        lblSaleOffRes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblSaleOffRes.setText("0");
-
         lblTotalAmount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotalAmount.setText("Tổng tiền");
 
@@ -119,9 +116,6 @@ public class ConfirmFrm extends javax.swing.JFrame {
 
         lblPaymentType.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPaymentType.setText("Phương thức thanh toán");
-
-        lblPaymentTypeRes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPaymentTypeRes.setText("Chuyển khoản");
 
         lblNote.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNote.setText("Ghi chú");
@@ -176,11 +170,11 @@ public class ConfirmFrm extends javax.swing.JFrame {
                                     .addComponent(lblNote)
                                     .addComponent(lblPaymentType))
                                 .addGap(131, 131, 131)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(scrllPnlNote, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSaleOffRes, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(scrllPnlNote, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                             .addComponent(lblTotalAmountRes, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPaymentTypeRes, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(spnSaleOff, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPaymentMethod))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -203,20 +197,20 @@ public class ConfirmFrm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSaleOff)
-                    .addComponent(lblSaleOffRes))
+                    .addComponent(spnSaleOff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotalAmount)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalAmount, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTotalAmountRes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPaymentType)
-                    .addComponent(lblPaymentTypeRes))
+                    .addComponent(txtPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNote)
                     .addComponent(scrllPnlNote, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnPrint)
                     .addComponent(btnCancel))
@@ -268,10 +262,8 @@ public class ConfirmFrm extends javax.swing.JFrame {
     private javax.swing.JLabel lblImportedBookTitleTable;
     private javax.swing.JLabel lblNote;
     private javax.swing.JLabel lblPaymentType;
-    private javax.swing.JLabel lblPaymentTypeRes;
     private javax.swing.JLabel lblProvider;
     private javax.swing.JLabel lblSaleOff;
-    private javax.swing.JLabel lblSaleOffRes;
     private javax.swing.JLabel lblTotalAmount;
     private javax.swing.JLabel lblTotalAmountRes;
     private javax.swing.JLabel lblWarehouseStaffName;
@@ -279,8 +271,10 @@ public class ConfirmFrm extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrllPnlImportedBookTitleList;
     private javax.swing.JScrollPane scrllPnlListProvider;
     private javax.swing.JScrollPane scrllPnlNote;
+    private javax.swing.JSpinner spnSaleOff;
     private javax.swing.JTable tblImportedBookTitle;
     private javax.swing.JTable tblProvider;
     private javax.swing.JTextArea txtNote;
+    private javax.swing.JTextField txtPaymentMethod;
     // End of variables declaration//GEN-END:variables
 }

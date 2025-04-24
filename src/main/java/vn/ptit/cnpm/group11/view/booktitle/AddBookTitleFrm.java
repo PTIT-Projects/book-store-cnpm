@@ -37,8 +37,8 @@ public class AddBookTitleFrm extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         lblPublicationYear = new javax.swing.JLabel();
         lblUnitPrice = new javax.swing.JLabel();
-        txtPublicationYear = new javax.swing.JTextField();
-        txtUnitPrice = new javax.swing.JTextField();
+        spnPublicationYear = new javax.swing.JSpinner();
+        spnUnitPrice = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,8 +81,9 @@ public class AddBookTitleFrm extends javax.swing.JFrame {
                             .addComponent(txtPublisher, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtBookTitleName, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPublicationYear, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(spnUnitPrice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                .addComponent(spnPublicationYear, javax.swing.GroupLayout.Alignment.LEADING)))))
                 .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
@@ -111,11 +112,11 @@ public class AddBookTitleFrm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPublicationYear)
-                    .addComponent(txtPublicationYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnPublicationYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUnitPrice)
-                    .addComponent(txtUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spnUnitPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddBookTitle)
@@ -170,10 +171,10 @@ public class AddBookTitleFrm extends javax.swing.JFrame {
     private javax.swing.JLabel lblPublicationYear;
     private javax.swing.JLabel lblPublisher;
     private javax.swing.JLabel lblUnitPrice;
+    private javax.swing.JSpinner spnPublicationYear;
+    private javax.swing.JSpinner spnUnitPrice;
     private javax.swing.JTextField txtAuthor;
     private javax.swing.JTextField txtBookTitleName;
-    private javax.swing.JTextField txtPublicationYear;
     private javax.swing.JTextField txtPublisher;
-    private javax.swing.JTextField txtUnitPrice;
     // End of variables declaration//GEN-END:variables
 }
