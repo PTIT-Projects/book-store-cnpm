@@ -4,17 +4,38 @@
  */
 package vn.ptit.cnpm.group11.view.importedbooktitle;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import vn.ptit.cnpm.group11.model.BookTitle;
+import vn.ptit.cnpm.group11.model.ImportBill;
+import vn.ptit.cnpm.group11.model.ImportedBookTitle;
+
 /**
  *
  * @author Admin
  */
-public class EnterQuantityFrm extends javax.swing.JFrame {
+public class EnterQuantityFrm extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form EnterQuantityFrm
      */
-    public EnterQuantityFrm() {
+    private ImportBill importBill;
+    private BookTitle bookTitle;
+    public EnterQuantityFrm(ImportBill importBill, BookTitle bookTitle) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.importBill = importBill;
+        this.bookTitle = bookTitle;
+        lblBookTitleIdRes.setText(String.valueOf(bookTitle.getId()));
+        lblBookTitleNameRes.setText(bookTitle.getName());
+        lblAuthorRes.setText(bookTitle.getAuthor());
+        lblPublisherRes.setText(bookTitle.getPublisher());
+        lblPublicationYearRes.setText(String.valueOf(bookTitle.getPublicationYear()));
+        lblUnitPriceRes.setText(String.valueOf(bookTitle.getUnitPrice()));
+        
+        addActionListener();
     }
 
     /**
@@ -44,7 +65,7 @@ public class EnterQuantityFrm extends javax.swing.JFrame {
         btnConfirm = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblAddBookTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAddBookTitle.setText("Nhập số lượng truyện");
@@ -174,37 +195,37 @@ public class EnterQuantityFrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new EnterQuantityFrm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(EnterQuantityFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new EnterQuantityFrm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -225,4 +246,39 @@ public class EnterQuantityFrm extends javax.swing.JFrame {
     private javax.swing.JLabel lblUnitPriceRes;
     private javax.swing.JSpinner spnQuantity;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() instanceof JButton) {
+            if (e.getSource().equals(btnCancel)) {
+                this.dispose();
+            } else if (e.getSource().equals(btnConfirm)) {
+                ImportedBookTitle ibt = new ImportedBookTitle();
+                ibt.setUnitPrice(bookTitle.getUnitPrice());
+                ibt.setQuantity((int)spnQuantity.getValue());
+                ibt.setBookTitle(bookTitle);
+                ArrayList<ImportedBookTitle> ibts = importBill.getImportedBookTitleList();
+                boolean isContain = false;
+                for (ImportedBookTitle importedBookTitle : ibts) {
+                    if (importedBookTitle.getBookTitle().equals(bookTitle)) {
+                        importedBookTitle.setQuantity((int)spnQuantity.getValue());
+                        isContain = true;
+                        break;
+                    }
+                }
+                if (!isContain) {
+                    ibts.add(ibt);
+                }
+                importBill.setImportedBookTitleList(ibts);
+                
+                ImportedBookTitleListFrm ibtlf = new ImportedBookTitleListFrm(importBill);
+                ibtlf.setVisible(true);
+                this.dispose();
+            }
+        }
+    }
+    private void addActionListener() {
+        btnConfirm.addActionListener(this);
+        btnCancel.addActionListener(this);
+    }
 }

@@ -28,8 +28,9 @@ public class UserDAO extends DAO {
             preparedStatement.setString(2, user.getPassword());
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
-                user.setFullName(rs.getString("fullname"));
+                user.setFullName(rs.getString("full_name"));
                 user.setRole(rs.getString("role"));
+                user.setId(rs.getInt("id"));
                 result = true;
             }
         } catch (SQLException e) {

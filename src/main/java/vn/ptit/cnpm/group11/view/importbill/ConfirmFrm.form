@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -81,11 +81,11 @@
                               <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="scrllPnlNote" pref="331" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrllPnlNote" min="-2" pref="331" max="-2" attributes="0"/>
                           <Component id="lblTotalAmountRes" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                           <Component id="spnSaleOff" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
-                          <Component id="txtPaymentMethod" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmbPaymentMethod" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -130,7 +130,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPaymentType" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPaymentMethod" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbPaymentMethod" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -366,8 +366,6 @@
     </Container>
     <Component class="javax.swing.JSpinner" name="spnSaleOff">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPaymentMethod">
-    </Component>
     <Component class="javax.swing.JLabel" name="lblImportDate">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -380,6 +378,20 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="11/4/2025"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbPaymentMethod">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Ti&#x1ec1;n m&#x1eb7;t"/>
+            <StringItem index="1" value="Chuy&#x1ec3;n kho&#x1ea3;n"/>
+            <StringItem index="2" value="Th&#x1ebb; t&#xed;n d&#x1ee5;ng"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

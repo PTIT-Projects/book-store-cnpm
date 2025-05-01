@@ -11,7 +11,7 @@ package vn.ptit.cnpm.group11.model;
 public class ImportedBookTitle {
     private int id;
     private int quantity;
-    private int amount;
+    private long amount;
     private int unitPrice;
     private BookTitle bookTitle;
 
@@ -31,7 +31,7 @@ public class ImportedBookTitle {
         this.quantity = quantity;
     }
 
-    public int getAmount() {
+    public long getAmount() {
         return unitPrice * quantity;
     }
 

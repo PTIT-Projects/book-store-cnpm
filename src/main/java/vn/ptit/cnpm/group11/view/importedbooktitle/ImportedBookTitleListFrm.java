@@ -4,17 +4,36 @@
  */
 package vn.ptit.cnpm.group11.view.importedbooktitle;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import vn.ptit.cnpm.group11.model.ImportBill;
+import vn.ptit.cnpm.group11.model.ImportedBookTitle;
+import vn.ptit.cnpm.group11.view.booktitle.SearchBookTitleFrm;
+import vn.ptit.cnpm.group11.view.importbill.ConfirmFrm;
+
 /**
  *
  * @author Admin
  */
-public class ImportedBookTitleListFrm extends javax.swing.JFrame {
+public class ImportedBookTitleListFrm extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form ImportedBookTitleListFrm
      */
-    public ImportedBookTitleListFrm() {
+    private ImportBill importBill;
+    private ArrayList<ImportedBookTitle> ibts;
+    public ImportedBookTitleListFrm(ImportBill importBill) {
         initComponents();
+        this.importBill = importBill;
+        this.ibts = importBill.getImportedBookTitleList();
+        this.setLocationRelativeTo(null);
+        addActionListener();
+        initTblImportedBookTitle();
     }
 
     /**
@@ -33,7 +52,7 @@ public class ImportedBookTitleListFrm extends javax.swing.JFrame {
         btnConfirm = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblAddBookTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAddBookTitle.setText("Danh sách đầu truyện nhập");
@@ -102,37 +121,37 @@ public class ImportedBookTitleListFrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ImportedBookTitleListFrm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ImportedBookTitleListFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ImportedBookTitleListFrm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -142,4 +161,63 @@ public class ImportedBookTitleListFrm extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrllPnlImportedBookTitleList;
     private javax.swing.JTable tblImportedBookTitle;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() instanceof JButton) {
+            if (e.getSource().equals(btnCancel)) {
+                this.dispose();
+            } else if (e.getSource().equals(btnImportBookTitle)) {
+                SearchBookTitleFrm sbtf = new SearchBookTitleFrm(importBill);
+                sbtf.setVisible(true);
+                this.dispose();
+            } else if (e.getSource().equals(btnConfirm)) {
+                ConfirmFrm confirmFrm = new ConfirmFrm(importBill);
+                confirmFrm.setVisible(true);
+                this.dispose();
+            }
+        }
+    }
+    private void addActionListener() {
+        btnCancel.addActionListener(this);
+        btnConfirm.addActionListener(this);
+        btnImportBookTitle.addActionListener(this);
+        tblImportedBookTitle.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int column = tblImportedBookTitle.getColumnModel().getColumnIndexAtX(e.getX());
+                int row = e.getY() / tblImportedBookTitle.getRowHeight();
+                
+                if (row < tblImportedBookTitle.getRowCount() && row >= 0
+                        && column < tblImportedBookTitle.getColumnCount()
+                        && column >= 0) {
+                    ImportedBookTitle ibt = ibts.get(row);
+                    EnterQuantityFrm enterQuantityFrm = new EnterQuantityFrm(importBill, ibt.getBookTitle());
+                    enterQuantityFrm.setVisible(true);
+                    ImportedBookTitleListFrm.this.dispose();
+                }
+            }
+        });
+    }
+    private void initTblImportedBookTitle() {
+        String[] columns = {
+           "STT", "Mã", "Tên", "Đơn giá", "Số lượng", "Thành tiền"
+        };
+        String[][] values = new String[ibts.size()][columns.length];
+        for (int i = 0; i < ibts.size(); i++) {
+            values[i][0] = String.valueOf(i + 1);
+            values[i][1] = String.valueOf(ibts.get(i).getBookTitle().getId());
+            values[i][2] = ibts.get(i).getBookTitle().getName();
+            values[i][3] = String.valueOf(ibts.get(i).getBookTitle().getUnitPrice());
+            values[i][4] = String.valueOf(ibts.get(i).getQuantity());
+            values[i][5] = String.valueOf(ibts.get(i).getAmount());
+        }
+        DefaultTableModel tableModel = new DefaultTableModel(values, columns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tblImportedBookTitle.setModel(tableModel);
+    }
 }

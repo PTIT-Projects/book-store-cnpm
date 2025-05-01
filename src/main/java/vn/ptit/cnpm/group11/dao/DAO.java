@@ -10,8 +10,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -24,7 +22,7 @@ public class DAO {
             Properties properties = new Properties();
             try (InputStream input = getClass().getClassLoader().getResourceAsStream("application.properties")) {
                 if (input == null) {
-                    System.out.println("Cannot find file application.properties");
+                    System.out.println("Cannot find application.properties file");
                     return;
                 }
                 properties.load(input);
@@ -36,7 +34,7 @@ public class DAO {
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                System.out.println("Database connected successfully!");
+                System.out.println("Connect to database successfully!");
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

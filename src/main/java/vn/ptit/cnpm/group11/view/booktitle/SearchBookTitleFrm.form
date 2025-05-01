@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -108,42 +108,14 @@
               </Border>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="3">
-                <Column editable="true" title="STT" type="java.lang.Integer">
-                  <Data value="1"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="M&#xe3;" type="java.lang.Integer">
-                  <Data value="2"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="T&#xea;n" type="java.lang.String">
-                  <Data value="7 vi&#xea;n ng&#x1ecd;c r&#x1ed3;ng t&#x1ead;p 8"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="T&#xe1;c gi&#x1ea3;" type="java.lang.String">
-                  <Data value="Akira Toriyama"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="Nh&#xe0; xu&#xe2;t b&#x1ea3;n" type="java.lang.String">
-                  <Data value="Kim &#x110;&#x1ed3;ng"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="N&#x103;m xu&#x1ea5;t b&#x1ea3;n" type="java.lang.Integer">
-                  <Data value="2023"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
-                <Column editable="true" title="&#x110;&#x1a1;n gi&#xe1;" type="java.lang.Integer">
-                  <Data value="30000"/>
-                  <Data value="null"/>
-                  <Data value="null"/>
-                </Column>
+              <Table columnCount="7" rowCount="0">
+                <Column editable="true" title="STT" type="java.lang.Integer"/>
+                <Column editable="true" title="M&#xe3;" type="java.lang.Integer"/>
+                <Column editable="true" title="T&#xea;n" type="java.lang.String"/>
+                <Column editable="true" title="T&#xe1;c gi&#x1ea3;" type="java.lang.String"/>
+                <Column editable="true" title="Nh&#xe0; xu&#xe2;t b&#x1ea3;n" type="java.lang.String"/>
+                <Column editable="true" title="N&#x103;m xu&#x1ea5;t b&#x1ea3;n" type="java.lang.Integer"/>
+                <Column editable="true" title="&#x110;&#x1a1;n gi&#xe1;" type="java.lang.Integer"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

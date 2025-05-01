@@ -9,18 +9,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import vn.ptit.cnpm.group11.model.Provider;
+import static vn.ptit.cnpm.group11.dao.DAO.connection;
+import vn.ptit.cnpm.group11.model.BookTitle;
 
 /**
  *
  * @author duongvct
  */
-public class ProviderDAO extends DAO{
-    public ArrayList<Provider> searchProviderByName(String name) {
-        ArrayList<Provider> providers = new ArrayList<>();
+public class BookTitleDAO {
+    public ArrayList<BookTitle> searchBookTitleByName(String name) {
+        ArrayList<BookTitle> bookTitles = new ArrayList<>();
         String sql = """
             SELECT *
-            FROM tblProvider
+            FROM tblBookTitle
             WHERE name LIKE ?
                      """;
         try {
@@ -28,40 +29,40 @@ public class ProviderDAO extends DAO{
             ps.setNString(1, "%" + name + "%");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Provider provider = new Provider();
-                provider.setId(rs.getInt("id"));
-                provider.setAddress(rs.getNString("address"));
-                provider.setEmail(rs.getString("email"));
-                provider.setPhoneNumber(rs.getString("phone_number"));
-                provider.setNote(rs.getNString("note"));
-                provider.setName(rs.getNString("name"));
-                providers.add(provider);
+                BookTitle bookTitle = new BookTitle();
+                bookTitle.setId(rs.getInt("id"));
+                bookTitle.setName(rs.getNString("name"));
+                bookTitle.setAuthor(rs.getNString("author"));
+                bookTitle.setPublicationYear(rs.getInt("publication_year"));
+                bookTitle.setPublisher(rs.getNString("publisher"));
+                bookTitle.setUnitPrice(rs.getInt("unit_price"));
+                bookTitles.add(bookTitle);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return providers;
+        return bookTitles;
     }
-    public boolean addNewProvider(Provider provider) {
+    public boolean addNewBookTitle(BookTitle bookTitle) {
         int isAdded = 0;
         String sql = 
         """
-        INSERT INTO tblProvider (name, address, email, phone_number, note)
+        INSERT INTO tblBookTitle (name, author, publication_year, publisher, unit_price)
         VALUES 
         (?, ?, ?, ?, ?)
         """;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setNString(1, provider.getName());
-            preparedStatement.setNString(2, provider.getAddress());
-            preparedStatement.setString(3, provider.getEmail());
-            preparedStatement.setString(4, provider.getPhoneNumber());
-            preparedStatement.setNString(5, provider.getNote());
+            preparedStatement.setNString(1, bookTitle.getName());
+            preparedStatement.setNString(2, bookTitle.getAuthor());
+            preparedStatement.setInt(3, bookTitle.getPublicationYear());
+            preparedStatement.setNString(4, bookTitle.getPublisher());
+            preparedStatement.setInt(5, bookTitle.getUnitPrice());
             
             isAdded = preparedStatement.executeUpdate();
             ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
             if (generatedKeys.next()) {
-                provider.setId(generatedKeys.getInt(1));
+                bookTitle.setId(generatedKeys.getInt(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();

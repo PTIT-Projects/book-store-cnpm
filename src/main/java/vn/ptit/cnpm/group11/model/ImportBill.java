@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class ImportBill {
     private int id;
-    private int totalAmount;
+    private long totalAmount;
     private LocalDate importDate;
     private int saleOff;
     private String paymentMethod;
@@ -22,6 +22,10 @@ public class ImportBill {
     private User user;
     private ArrayList<ImportedBookTitle> importedBookTitleList;
 
+    
+    public ImportBill() {
+        this.importedBookTitleList = new ArrayList();
+    }
     public int getId() {
         return id;
     }
@@ -86,8 +90,8 @@ public class ImportBill {
         this.importedBookTitleList = importedBookTitleList;
     }
     
-    private int getTotalAmount() {
-        int res = 0;
+    public long getTotalAmount() {
+        long res = 0;
         for (ImportedBookTitle ibt : importedBookTitleList) {
             res += ibt.getAmount();
         }

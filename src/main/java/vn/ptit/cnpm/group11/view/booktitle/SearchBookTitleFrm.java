@@ -4,17 +4,35 @@
  */
 package vn.ptit.cnpm.group11.view.booktitle;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import vn.ptit.cnpm.group11.dao.BookTitleDAO;
+import vn.ptit.cnpm.group11.model.BookTitle;
+import vn.ptit.cnpm.group11.model.ImportBill;
+import vn.ptit.cnpm.group11.view.importedbooktitle.EnterQuantityFrm;
+
 /**
  *
  * @author Admin
  */
-public class SearchBookTitleFrm extends javax.swing.JFrame {
+public class SearchBookTitleFrm extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form SearchBookTitleFrm
      */
-    public SearchBookTitleFrm() {
+    private ImportBill importBill;
+    private ArrayList<BookTitle> bookTitles;
+    public SearchBookTitleFrm(ImportBill importBill) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.importBill = importBill;
+        this.bookTitles = new ArrayList<>();
+        addActionListener();
     }
 
     /**
@@ -34,7 +52,7 @@ public class SearchBookTitleFrm extends javax.swing.JFrame {
         scrllPaneListBookTitle = new javax.swing.JScrollPane();
         tblBookTitle = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblSearchBookTitle.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblSearchBookTitle.setText("Tìm kiếm đầu truyện");
@@ -48,9 +66,7 @@ public class SearchBookTitleFrm extends javax.swing.JFrame {
         tblBookTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblBookTitle.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1),  new Integer(2), "7 viên ngọc rồng tập 8", "Akira Toriyama", "Kim Đồng",  new Integer(2023),  new Integer(30000)},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "STT", "Mã", "Tên", "Tác giả", "Nhà xuât bản", "Năm xuất bản", "Đơn giá"
@@ -114,37 +130,37 @@ public class SearchBookTitleFrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SearchBookTitleFrm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SearchBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SearchBookTitleFrm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBookTitle;
@@ -155,4 +171,65 @@ public class SearchBookTitleFrm extends javax.swing.JFrame {
     private javax.swing.JTable tblBookTitle;
     private javax.swing.JTextField txtBookTitleName;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() instanceof JButton) {
+            if (e.getSource().equals(btnSearchBookTitle)) {
+                if (txtBookTitleName.getText() != null) {
+                    String key = txtBookTitleName.getText().trim();
+                    if (key.isBlank() || key.isEmpty()) {
+                        return;
+                    }
+                    BookTitleDAO bookTitleDAO = new BookTitleDAO();
+                    bookTitles = bookTitleDAO.searchBookTitleByName(key);
+                    String[] columns = {
+                        "STT", "Mã", "Tên", "Tác giả", "Nhà xuât bản", "Năm xuất bản", "Đơn giá"
+                    };
+                    String[][] values = new String[bookTitles.size()][columns.length];
+                    for (int i = 0; i < bookTitles.size(); i++) {
+                        values[i][0] = String.valueOf(i + 1);
+                        values[i][1] = String.valueOf(bookTitles.get(i).getId());
+                        values[i][2] = bookTitles.get(i).getName();
+                        values[i][3] = bookTitles.get(i).getAuthor();
+                        values[i][4] = bookTitles.get(i).getPublisher();
+                        values[i][5] = String.valueOf(bookTitles.get(i).getPublicationYear());
+                        values[i][6] = String.valueOf(bookTitles.get(i).getUnitPrice());
+                    }
+                    DefaultTableModel tableModel = new DefaultTableModel(values, columns) {
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false;
+                        }
+                    };
+                    tblBookTitle.setModel(tableModel);
+                }
+            } else if (e.getSource().equals(btnAddBookTitle)) {
+                AddBookTitleFrm abtf = new AddBookTitleFrm(importBill);
+                abtf.setVisible(true);
+                this.dispose();
+            }
+            
+        }
+    }
+    private void addActionListener() {
+        btnSearchBookTitle.addActionListener(this);
+        btnAddBookTitle.addActionListener(this);
+        tblBookTitle.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int column = tblBookTitle.getColumnModel().getColumnIndexAtX(e.getX());
+                int row = e.getY() / tblBookTitle.getRowHeight();
+                
+                if (row < tblBookTitle.getRowCount() && row >= 0
+                        && column < tblBookTitle.getColumnCount()
+                        && column >= 0) {
+                    BookTitle bookTitle = bookTitles.get(row);
+                    EnterQuantityFrm enterQuantityFrm = new EnterQuantityFrm(importBill, bookTitle);
+                    enterQuantityFrm.setVisible(true);
+                    SearchBookTitleFrm.this.dispose();
+                }
+            }
+        });
+    }
 }

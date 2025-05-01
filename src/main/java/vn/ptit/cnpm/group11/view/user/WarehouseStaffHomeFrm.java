@@ -4,17 +4,28 @@
  */
 package vn.ptit.cnpm.group11.view.user;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import vn.ptit.cnpm.group11.model.User;
+import vn.ptit.cnpm.group11.view.provider.SearchProviderFrm;
+
 /**
  *
  * @author Admin
  */
-public class WarehouseStaffHomeFrm extends javax.swing.JFrame {
-
+public class WarehouseStaffHomeFrm extends javax.swing.JFrame implements ActionListener{
+    private User user;
     /**
      * Creates new form WarehouseStaffHomeView
      */
-    public WarehouseStaffHomeFrm() {
+    public WarehouseStaffHomeFrm(User user) {
         initComponents();
+        this.user = user;
+        this.setLocationRelativeTo(null);
+        this.lblWarehouseStaffName.setText(user.getFullName());
+        
+        addActionListener();
     }
 
     /**
@@ -31,7 +42,7 @@ public class WarehouseStaffHomeFrm extends javax.swing.JFrame {
         btnImportBookTitle = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblWarehouseStaffHomeView.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblWarehouseStaffHomeView.setText("Trang chủ nhân viên kho");
@@ -59,17 +70,17 @@ public class WarehouseStaffHomeFrm extends javax.swing.JFrame {
                         .addComponent(btnCancel)
                         .addGap(155, 155, 155))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblWarehouseStaffName, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))))
+                        .addComponent(lblWarehouseStaffName, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(lblWarehouseStaffHomeView, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(27, 27, 27)
                 .addComponent(lblWarehouseStaffName)
-                .addGap(37, 37, 37)
+                .addGap(36, 36, 36)
                 .addComponent(btnImportBookTitle)
                 .addGap(27, 27, 27)
                 .addComponent(btnCancel)
@@ -82,38 +93,38 @@ public class WarehouseStaffHomeFrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new WarehouseStaffHomeFrm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(WarehouseStaffHomeFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new WarehouseStaffHomeFrm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
@@ -121,4 +132,23 @@ public class WarehouseStaffHomeFrm extends javax.swing.JFrame {
     private javax.swing.JLabel lblWarehouseStaffHomeView;
     private javax.swing.JLabel lblWarehouseStaffName;
     // End of variables declaration//GEN-END:variables
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if ((e.getSource() instanceof JButton)) {
+            if (e.getSource().equals(btnCancel)) {
+                this.dispose();
+                LoginFrm loginFrm = new LoginFrm();
+                loginFrm.setVisible(true);
+            } else if (e.getSource().equals(btnImportBookTitle)) {
+                SearchProviderFrm searchProviderFrm = new SearchProviderFrm(user);
+                searchProviderFrm.setVisible(true);
+            }
+            
+        } 
+    }
+    private void addActionListener(){
+        btnImportBookTitle.addActionListener(this);
+        btnCancel.addActionListener(this);
+    }
 }

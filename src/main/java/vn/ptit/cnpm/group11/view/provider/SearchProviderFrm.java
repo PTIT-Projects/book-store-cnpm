@@ -4,17 +4,36 @@
  */
 package vn.ptit.cnpm.group11.view.provider;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
+import vn.ptit.cnpm.group11.dao.ProviderDAO;
+import vn.ptit.cnpm.group11.model.ImportBill;
+import vn.ptit.cnpm.group11.model.Provider;
+import vn.ptit.cnpm.group11.model.User;
+import vn.ptit.cnpm.group11.view.booktitle.SearchBookTitleFrm;
+
 /**
  *
  * @author Admin
  */
-public class SearchProviderFrm extends javax.swing.JFrame {
+public class SearchProviderFrm extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form SearchProviderFrm
      */
-    public SearchProviderFrm() {
+    private User user;
+    private ArrayList<Provider> providers;
+    public SearchProviderFrm(User user) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.user = user;
+        this.providers = new ArrayList<>();
+        addActionListener();
     }
 
     /**
@@ -34,7 +53,7 @@ public class SearchProviderFrm extends javax.swing.JFrame {
         scrllPaneListProvider = new javax.swing.JScrollPane();
         tblProvider = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblSearchProvider.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         lblSearchProvider.setText("Tìm kiếm nhà cung cấp");
@@ -48,9 +67,7 @@ public class SearchProviderFrm extends javax.swing.JFrame {
         tblProvider.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblProvider.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                { new Integer(1),  new Integer(2), "B", "Sài Gòn", "sgb@gmail.com", "9876543210", "Chuyên cung cấp truyện ngôn tình"},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "STT", "Mã", "Tên", "Địa chỉ", "Email", "Điện thoại", "Mô tả"
@@ -112,37 +129,37 @@ public class SearchProviderFrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SearchProviderFrm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(SearchProviderFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new SearchProviderFrm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddProvider;
@@ -153,4 +170,68 @@ public class SearchProviderFrm extends javax.swing.JFrame {
     private javax.swing.JTable tblProvider;
     private javax.swing.JTextField txtProviderName;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() instanceof JButton) {
+            if (e.getSource().equals(btnSearchProvider)) {
+                if (txtProviderName.getText() != null) {
+                    String key = txtProviderName.getText().trim();
+                    if (key.isBlank() || key.isEmpty()) {
+                        return;
+                    }
+                    ProviderDAO providerDAO = new ProviderDAO();
+                    providers = providerDAO.searchProviderByName(key);
+                    String[] columns = {
+                        "STT", "Mã", "Tên", "Địa chỉ", "Email", "Điện thoại", "Mô tả"
+                    };
+                    String[][] values = new String[providers.size()][columns.length];
+                    for (int i = 0; i < providers.size(); i++) {
+                        values[i][0] = String.valueOf(i + 1);
+                        values[i][1] = String.valueOf(providers.get(i).getId());
+                        values[i][2] = providers.get(i).getName();
+                        values[i][3] = providers.get(i).getAddress();
+                        values[i][4] = providers.get(i).getEmail();
+                        values[i][5] = providers.get(i).getPhoneNumber();
+                        values[i][6] = providers.get(i).getNote();
+                    }
+                    DefaultTableModel tableModel = new DefaultTableModel(values, columns) {
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false;
+                        }
+                    };
+                    tblProvider.setModel(tableModel);
+                }
+            } else if (e.getSource().equals(btnAddProvider)) {
+                AddProviderFrm addProviderFrm = new AddProviderFrm(user);
+                addProviderFrm.setVisible(true);
+                this.dispose();
+            }
+            
+        }
+    }
+    private void addActionListener() {
+        btnSearchProvider.addActionListener(this);
+        btnAddProvider.addActionListener(this);
+        tblProvider.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int column = tblProvider.getColumnModel().getColumnIndexAtX(e.getX());
+                int row = e.getY() / tblProvider.getRowHeight();
+                
+                if (row < tblProvider.getRowCount() && row >= 0
+                        && column < tblProvider.getColumnCount()
+                        && column >= 0) {
+                    Provider selectedProvider = providers.get(row);
+                    ImportBill importBill = new ImportBill();
+                    importBill.setUser(user);
+                    importBill.setProvider(selectedProvider);
+                    SearchBookTitleFrm sbtf = new SearchBookTitleFrm(importBill);
+                    sbtf.setVisible(true);
+                    SearchProviderFrm.this.dispose();
+                }
+            }
+        });
+    }
 }

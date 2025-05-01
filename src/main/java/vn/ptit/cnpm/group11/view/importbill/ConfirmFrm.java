@@ -4,17 +4,36 @@
  */
 package vn.ptit.cnpm.group11.view.importbill;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import vn.ptit.cnpm.group11.model.ImportBill;
+import vn.ptit.cnpm.group11.dao.ImportBillDAO;
+import vn.ptit.cnpm.group11.model.ImportedBookTitle;
+import vn.ptit.cnpm.group11.model.Provider;
+
 /**
  *
  * @author Admin
  */
-public class ConfirmFrm extends javax.swing.JFrame {
+public class ConfirmFrm extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form ConfirmFrm
      */
-    public ConfirmFrm() {
+    private ImportBill importBill;
+    public ConfirmFrm(ImportBill importBill) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.importBill = importBill;
+        addActionListener();
+        initTbls();
+        
     }
 
     /**
@@ -45,11 +64,11 @@ public class ConfirmFrm extends javax.swing.JFrame {
         scrllPnlNote = new javax.swing.JScrollPane();
         txtNote = new javax.swing.JTextArea();
         spnSaleOff = new javax.swing.JSpinner();
-        txtPaymentMethod = new javax.swing.JTextField();
         lblImportDate = new javax.swing.JLabel();
         lblImportDateRes = new javax.swing.JLabel();
+        cmbPaymentMethod = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblAddBookTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAddBookTitle.setText("Xác nhận nhập truyện");
@@ -131,6 +150,8 @@ public class ConfirmFrm extends javax.swing.JFrame {
 
         lblImportDateRes.setText("11/4/2025");
 
+        cmbPaymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "Chuyển khoản", "Thẻ tín dụng" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,11 +200,11 @@ public class ConfirmFrm extends javax.swing.JFrame {
                                     .addComponent(lblNote)
                                     .addComponent(lblPaymentType))
                                 .addGap(131, 131, 131)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(scrllPnlNote, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrllPnlNote, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTotalAmountRes, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(spnSaleOff, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPaymentMethod))))
+                            .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(scrllPnlListProvider, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -219,7 +240,7 @@ public class ConfirmFrm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPaymentType)
-                    .addComponent(txtPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbPaymentMethod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblNote)
@@ -237,41 +258,42 @@ public class ConfirmFrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConfirmFrm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ConfirmFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new ConfirmFrm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnPrint;
+    private javax.swing.JComboBox<String> cmbPaymentMethod;
     private javax.swing.JLabel lblAddBookTitle;
     private javax.swing.JLabel lblImportDate;
     private javax.swing.JLabel lblImportDateRes;
@@ -291,6 +313,88 @@ public class ConfirmFrm extends javax.swing.JFrame {
     private javax.swing.JTable tblImportedBookTitle;
     private javax.swing.JTable tblProvider;
     private javax.swing.JTextArea txtNote;
-    private javax.swing.JTextField txtPaymentMethod;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() instanceof JButton) {
+            if (e.getSource().equals(btnCancel)) {
+                this.dispose();
+            } else if (e.getSource().equals(btnPrint)) {
+                importBill.setImportDate(LocalDate.now());
+                importBill.setSaleOff((int)spnSaleOff.getValue());
+                importBill.setNote(txtNote.getText());
+                importBill.setPaymentMethod((String)cmbPaymentMethod.getSelectedItem());
+                
+                ImportBillDAO ibdao = new ImportBillDAO();
+                if (ibdao.confirmImportBookTitle(importBill)) {
+                    JOptionPane.showMessageDialog(this, "Nhập truyện từ nhà cung cấp thành công!");
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Nhập truyện từ nhà cung cấp thất bại!");
+                }
+            }
+        }
+    }
+    private void addActionListener() {
+        btnCancel.addActionListener(this);
+        btnPrint.addActionListener(this);
+        spnSaleOff.addChangeListener(listener -> {
+            int saleOff = (int)spnSaleOff.getValue();
+
+            lblTotalAmountRes.setText(String.valueOf(calTotalAmount() - saleOff));
+        });
+    }
+    private void initTbls(){
+        String[] providerColumns = {
+          "Mã", "Tên", "Địa chỉ", "Email", "Điện thoại", "Mô tả"
+        };
+        String[][] providerValue = new String[1][providerColumns.length];
+        Provider provider = importBill.getProvider();
+        providerValue[0][0] = String.valueOf(provider.getId());
+        providerValue[0][1] = provider.getName();
+        providerValue[0][2] = provider.getAddress();
+        providerValue[0][3] = provider.getEmail();
+        providerValue[0][4] = provider.getPhoneNumber();
+        providerValue[0][5] = provider.getNote();
+        DefaultTableModel providerTableModel = new DefaultTableModel(providerValue, providerColumns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tblProvider.setModel(providerTableModel);
+        
+        String[] importedBookTitlecolumns = {
+           "STT", "Mã", "Tên", "Đơn giá", "Số lượng", "Thành tiền"
+        };
+        ArrayList<ImportedBookTitle> ibts = importBill.getImportedBookTitleList();
+        String[][] importedBookTitleValues = new String[ibts.size()][importedBookTitlecolumns.length];
+        for (int i = 0; i < ibts.size(); i++) {
+            importedBookTitleValues[i][0] = String.valueOf(i + 1);
+            importedBookTitleValues[i][1] = String.valueOf(ibts.get(i).getBookTitle().getId());
+            importedBookTitleValues[i][2] = ibts.get(i).getBookTitle().getName();
+            importedBookTitleValues[i][3] = String.valueOf(ibts.get(i).getBookTitle().getUnitPrice());
+            importedBookTitleValues[i][4] = String.valueOf(ibts.get(i).getQuantity());
+            importedBookTitleValues[i][5] = String.valueOf(ibts.get(i).getAmount());
+        }
+        DefaultTableModel importedBookTitletableModel = new DefaultTableModel(importedBookTitleValues, importedBookTitlecolumns) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tblImportedBookTitle.setModel(importedBookTitletableModel);
+        lblImportDateRes.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        lblWarehouseStaffNameRes.setText(importBill.getUser().getFullName());
+        lblTotalAmountRes.setText(String.valueOf(calTotalAmount()));
+    }
+    private long calTotalAmount() {
+        long res = 0;
+        for (ImportedBookTitle ibt : importBill.getImportedBookTitleList()) {
+            res += ibt.getAmount();
+        }
+        return res;
+    }
+
 }

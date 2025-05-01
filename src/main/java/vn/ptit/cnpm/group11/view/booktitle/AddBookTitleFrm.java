@@ -4,17 +4,33 @@
  */
 package vn.ptit.cnpm.group11.view.booktitle;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import vn.ptit.cnpm.group11.dao.BookTitleDAO;
+import vn.ptit.cnpm.group11.dao.ProviderDAO;
+import vn.ptit.cnpm.group11.model.BookTitle;
+import vn.ptit.cnpm.group11.model.ImportBill;
+import vn.ptit.cnpm.group11.model.Provider;
+import vn.ptit.cnpm.group11.view.importedbooktitle.EnterQuantityFrm;
+
+
 /**
  *
  * @author Admin
  */
-public class AddBookTitleFrm extends javax.swing.JFrame {
+public class AddBookTitleFrm extends javax.swing.JFrame implements ActionListener{
 
     /**
      * Creates new form AddBookTitleFrm
      */
-    public AddBookTitleFrm() {
+    private ImportBill importBill;
+    public AddBookTitleFrm(ImportBill importBill) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.importBill = importBill;
+        addActionListener();
     }
 
     /**
@@ -40,7 +56,7 @@ public class AddBookTitleFrm extends javax.swing.JFrame {
         spnPublicationYear = new javax.swing.JSpinner();
         spnUnitPrice = new javax.swing.JSpinner();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblAddBookTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAddBookTitle.setText("Thêm mới đầu truyện");
@@ -130,37 +146,37 @@ public class AddBookTitleFrm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddBookTitleFrm().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(AddBookTitleFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new AddBookTitleFrm().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddBookTitle;
@@ -177,4 +193,42 @@ public class AddBookTitleFrm extends javax.swing.JFrame {
     private javax.swing.JTextField txtBookTitleName;
     private javax.swing.JTextField txtPublisher;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() instanceof JButton) {
+            if (e.getSource().equals(btnCancel)) {
+                this.dispose();
+            } else if (e.getSource().equals(btnAddBookTitle)) {
+                String bookTitleName = txtBookTitleName.getText().trim();
+                String author = txtAuthor.getText().trim();
+                String publisher = txtPublisher.getText().trim();
+                int publicationYear = (int)spnPublicationYear.getValue();
+                int unitPrice = (int)spnUnitPrice.getValue();
+                
+                BookTitle bookTitle = new BookTitle();
+                bookTitle.setName(bookTitleName);
+                bookTitle.setAuthor(author);
+                bookTitle.setPublisher(publisher);
+                bookTitle.setPublicationYear(publicationYear);
+                bookTitle.setUnitPrice(unitPrice);
+                
+                BookTitleDAO bookTitleDAO = new BookTitleDAO();
+                if (bookTitleDAO.addNewBookTitle(bookTitle)) {
+                    JOptionPane.showMessageDialog(this, "Tạo mới đầu truyện thành công !");  
+                    EnterQuantityFrm eqf = new EnterQuantityFrm(importBill, bookTitle);
+                    eqf.setVisible(true);
+                    this.dispose();
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Tạo mới đầu truyện thất bại!");     
+                }
+            }
+        }
+    }
+    
+    private void addActionListener() {
+        btnAddBookTitle.addActionListener(this);
+        btnCancel.addActionListener(this);
+    }
 }
