@@ -31,10 +31,11 @@ public class DAO {
                 String dbPassword = properties.getProperty("password");
                 try {
                     connection = DriverManager.getConnection(dbURL, dbUsername, dbPassword);
+                    System.out.println("Connect to database successfully!");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
-                System.out.println("Connect to database successfully!");
+
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
