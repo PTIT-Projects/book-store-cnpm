@@ -6,8 +6,6 @@ import vn.ptit.cnpm.group11.view.user.LoginFrm;
 public class Main {
     public static void main(String[] args){
         LoginFrm loginFrm = new LoginFrm();
-//        UserDAO userDAO = new UserDAO();
-//        userDAO.changePass();
         loginFrm.setVisible(true);
     }
 }

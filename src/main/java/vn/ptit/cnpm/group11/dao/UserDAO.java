@@ -45,19 +45,4 @@ public class UserDAO extends DAO {
         }
         return result;
     }
-    public void changePass() {
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        String sql = """
-        UPDATE tblUser
-        SET password=?
-        WHERE username = 'a'
-        """;
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, encoder.encode("123456"));
-            preparedStatement.executeQuery();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
