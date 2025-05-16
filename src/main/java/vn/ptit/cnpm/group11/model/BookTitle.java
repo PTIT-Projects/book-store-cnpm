@@ -66,4 +66,14 @@ public class BookTitle {
         this.unitPrice = unitPrice;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof BookTitle bookTitle)) return false;
+        return publicationYear == bookTitle.publicationYear && unitPrice == bookTitle.unitPrice && Objects.equals(name, bookTitle.name) && Objects.equals(author, bookTitle.author) && Objects.equals(publisher, bookTitle.publisher);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, author, publisher, publicationYear, unitPrice);
+    }
 }

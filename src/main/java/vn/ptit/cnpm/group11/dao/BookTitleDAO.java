@@ -44,22 +44,28 @@ public class BookTitleDAO extends DAO{
         return bookTitles;
     }
     public boolean addNewBookTitle(BookTitle bookTitle) throws Exception {
-        String sqlCheck = """
-                SELECT COUNT(*) FROM tblBookTitle
-                WHERE name = ? AND author = ? AND publisher = ? AND publication_year = ?
-                """;
-        try {
-            PreparedStatement ps = connection.prepareStatement(sqlCheck);
-            ps.setNString(1, bookTitle.getName());
-            ps.setNString(2, bookTitle.getAuthor());
-            ps.setNString(3, bookTitle.getPublisher());
-            ps.setInt(4, bookTitle.getPublicationYear());
-            ResultSet rs = ps.executeQuery();
-            if (rs.next() && rs.getInt(1) > 0) {
+//        String sqlCheck = """
+//                SELECT COUNT(*) FROM tblBookTitle
+//                WHERE name = ? AND author = ? AND publisher = ? AND publication_year = ?
+//                """;
+//        try {
+//            PreparedStatement ps = connection.prepareStatement(sqlCheck);
+//            ps.setNString(1, bookTitle.getName());
+//            ps.setNString(2, bookTitle.getAuthor());
+//            ps.setNString(3, bookTitle.getPublisher());
+//            ps.setInt(4, bookTitle.getPublicationYear());
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next() && rs.getInt(1) > 0) {
+//                throw new Exception("Đầu truyện đã tồn tại!");
+//            }
+//        } catch (Exception exception) {
+//            exception.printStackTrace();
+//        }
+        ArrayList<BookTitle> bookTitles = this.searchBookTitleByName(bookTitle.getName());
+        for (BookTitle bt : bookTitles) {
+            if (bt.equals(bookTitle)) {
                 throw new Exception("Đầu truyện đã tồn tại!");
             }
-        } catch (Exception exception) {
-            exception.printStackTrace();
         }
         int isAdded = 0;
         String sql = 
