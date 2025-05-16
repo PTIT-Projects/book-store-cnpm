@@ -20,10 +20,10 @@ public class UserDAO extends DAO {
     public boolean checkLogin(User user) {
         boolean result = false;
         String sql = """
-        SELECT * 
+        SELECT *
         FROM tblUser
         WHERE username = ?
-                     """;
+        """;
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);

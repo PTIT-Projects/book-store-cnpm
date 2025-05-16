@@ -214,14 +214,18 @@ public class AddBookTitleFrm extends javax.swing.JFrame implements ActionListene
                 bookTitle.setUnitPrice(unitPrice);
                 
                 BookTitleDAO bookTitleDAO = new BookTitleDAO();
-                if (bookTitleDAO.addNewBookTitle(bookTitle)) {
-                    JOptionPane.showMessageDialog(this, "Tạo mới đầu truyện thành công !");  
-                    EnterQuantityFrm eqf = new EnterQuantityFrm(importBill, bookTitle);
-                    eqf.setVisible(true);
-                    this.dispose();
-                    
-                } else {
-                    JOptionPane.showMessageDialog(this, "Tạo mới đầu truyện thất bại!");     
+                try {
+                    if (bookTitleDAO.addNewBookTitle(bookTitle)) {
+                        JOptionPane.showMessageDialog(this, "Tạo mới đầu truyện thành công !");
+                        EnterQuantityFrm eqf = new EnterQuantityFrm(importBill, bookTitle);
+                        eqf.setVisible(true);
+                        this.dispose();
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Tạo mới đầu truyện thất bại!");
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage());
                 }
             }
         }

@@ -22,7 +22,7 @@ public class ProviderDAO extends DAO{
             SELECT *
             FROM tblProvider
             WHERE name LIKE ?
-                     """;
+            """;
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setNString(1, "%" + name + "%");
@@ -42,12 +42,30 @@ public class ProviderDAO extends DAO{
         }
         return providers;
     }
-    public boolean addNewProvider(Provider provider) {
+    public boolean addNewProvider(Provider provider) throws Exception {
+
+        String sqlCheck = """
+                SELECT COUNT(*) FROM tblProvider
+                WHERE name = ? AND address = ? AND email = ? AND phone_number = ?
+                """;
+        try {
+            PreparedStatement ps = connection.prepareStatement(sqlCheck);
+            ps.setNString(1, provider.getName());
+            ps.setNString(2, provider.getAddress());
+            ps.setString(3, provider.getEmail());
+            ps.setString(4, provider.getPhoneNumber());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                throw new Exception("Nhà cung cấp đã tồn tại!");
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
         int isAdded = 0;
         String sql = 
         """
         INSERT INTO tblProvider (name, address, email, phone_number, note)
-        VALUES 
+        VALUES
         (?, ?, ?, ?, ?)
         """;
         try {

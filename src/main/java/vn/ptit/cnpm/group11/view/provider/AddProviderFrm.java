@@ -232,17 +232,21 @@ public class AddProviderFrm extends javax.swing.JFrame implements ActionListener
                 provider.setEmail(email);
                 
                 ProviderDAO providerDAO = new ProviderDAO();
-                if (providerDAO.addNewProvider(provider)) {
-                    JOptionPane.showMessageDialog(this, "Tạo mới nhà cung cấp thành công !");  
-                    ImportBill importBill = new ImportBill();
-                    importBill.setUser(user);
-                    importBill.setProvider(provider);
-                    SearchBookTitleFrm sbtf = new SearchBookTitleFrm(importBill);
-                    sbtf.setVisible(true);
-                    this.dispose();
-                    
-                } else {
-                    JOptionPane.showMessageDialog(this, "Tạo mới nhà cung cấp thất bại!");     
+                try {
+                    if (providerDAO.addNewProvider(provider)) {
+                        JOptionPane.showMessageDialog(this, "Tạo mới nhà cung cấp thành công !");
+                        ImportBill importBill = new ImportBill();
+                        importBill.setUser(user);
+                        importBill.setProvider(provider);
+                        SearchBookTitleFrm sbtf = new SearchBookTitleFrm(importBill);
+                        sbtf.setVisible(true);
+                        this.dispose();
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Tạo mới nhà cung cấp thất bại!");
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage());
                 }
             }
         }

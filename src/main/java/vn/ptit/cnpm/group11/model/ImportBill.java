@@ -6,6 +6,7 @@ package vn.ptit.cnpm.group11.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -24,7 +25,7 @@ public class ImportBill {
 
     
     public ImportBill() {
-        this.importedBookTitleList = new ArrayList();
+        this.importedBookTitleList = new ArrayList<>();
     }
     public int getId() {
         return id;
@@ -97,5 +98,15 @@ public class ImportBill {
         }
         return res - saleOff;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ImportBill that)) return false;
+        return id == that.id && totalAmount == that.totalAmount && saleOff == that.saleOff && Objects.equals(importDate, that.importDate) && Objects.equals(paymentMethod, that.paymentMethod) && Objects.equals(note, that.note) && Objects.equals(provider, that.provider) && Objects.equals(user, that.user) && Objects.equals(importedBookTitleList, that.importedBookTitleList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, totalAmount, importDate, saleOff, paymentMethod, note, provider, user, importedBookTitleList);
+    }
 }

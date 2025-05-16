@@ -16,14 +16,14 @@ import vn.ptit.cnpm.group11.model.BookTitle;
  *
  * @author duongvct
  */
-public class BookTitleDAO {
+public class BookTitleDAO extends DAO{
     public ArrayList<BookTitle> searchBookTitleByName(String name) {
         ArrayList<BookTitle> bookTitles = new ArrayList<>();
         String sql = """
             SELECT *
             FROM tblBookTitle
             WHERE name LIKE ?
-                     """;
+            """;
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setNString(1, "%" + name + "%");
@@ -43,12 +43,29 @@ public class BookTitleDAO {
         }
         return bookTitles;
     }
-    public boolean addNewBookTitle(BookTitle bookTitle) {
+    public boolean addNewBookTitle(BookTitle bookTitle) throws Exception {
+        String sqlCheck = """
+                SELECT COUNT(*) FROM tblBookTitle
+                WHERE name = ? AND author = ? AND publisher = ? AND publication_year = ?
+                """;
+        try {
+            PreparedStatement ps = connection.prepareStatement(sqlCheck);
+            ps.setNString(1, bookTitle.getName());
+            ps.setNString(2, bookTitle.getAuthor());
+            ps.setNString(3, bookTitle.getPublisher());
+            ps.setInt(4, bookTitle.getPublicationYear());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                throw new Exception("Đầu truyện đã tồn tại!");
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
         int isAdded = 0;
         String sql = 
         """
         INSERT INTO tblBookTitle (name, author, publication_year, publisher, unit_price)
-        VALUES 
+        VALUES
         (?, ?, ?, ?, ?)
         """;
         try {
