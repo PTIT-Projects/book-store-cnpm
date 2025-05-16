@@ -17,7 +17,22 @@ import vn.ptit.cnpm.group11.model.ImportedBookTitle;
  * @author duongvct
  */
 public class ImportBillDAO extends DAO{
-    public boolean confirmImportBookTitle(ImportBill importBill) {
+    public boolean confirmImportBookTitle(ImportBill importBill) throws Exception {
+        String sqlCheck = """
+            SELECT COUNT(*) FROM tblImportBill
+            WHERE import_date = ? AND provider_id = ? AND user_id = ? AND payment_method = ?
+        """;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        PreparedStatement ps = connection.prepareStatement(sqlCheck);
+        ps.setString(1, importBill.getImportDate().format(formatter));
+        ps.setInt(2, importBill.getProvider().getId());
+        ps.setInt(3, importBill.getUser().getId());
+        ps.setNString(4, importBill.getPaymentMethod());
+        ResultSet rs = ps.executeQuery();
+        if (rs.next() && rs.getInt(1) > 0) {
+            throw new Exception("Hóa đơn nhập đã tồn tại!");
+        }
+
         String sqlAddImportBill =
         """
         INSERT INTO tblImportBill
@@ -31,11 +46,38 @@ public class ImportBillDAO extends DAO{
         (quantity, unit_price, import_bill_id, book_title_id)
         VALUES (?, ?, ?, ?);
         """;
+//        ProviderDAO providerDAO = new ProviderDAO();
+//        ArrayList<Provider> providers = providerDAO.searchProviderByName(importBill.getProvider().getName());
+//        boolean hasProvider = false;
+//        for (Provider p : providers) {
+//            if (p.equals(importBill.getProvider())) {
+//                hasProvider = true;
+//                break;
+//            }
+//        }
+//        if (!hasProvider) {
+//            throw new Exception("Không thể tạo được hoá đơn khi nhà cung cấp không tồn tại!");
+//        }
+//        BookTitleDAO bookTitleDAO = new BookTitleDAO();
+//        for (ImportedBookTitle ibt : importBill.getImportedBookTitleList()) {
+//            boolean hasBookTitle = false;
+//            ArrayList<BookTitle> bookTitles = bookTitleDAO.searchBookTitleByName(ibt.getBookTitle().getName());
+//            for (BookTitle bt : bookTitles) {
+//                if (bt.equals(ibt.getBookTitle())) {
+//                    hasBookTitle = true;
+//                    break;
+//                }
+//            }
+//            if (!hasBookTitle) {
+//                throw new Exception("Không thể tạo được hoá đơn khi có đầu truyện không tồn tại!");
+//            }
+//        }
+
         boolean isSuccess = true;
         try {
             connection.setAutoCommit(false);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            PreparedStatement ps = connection.prepareStatement(sqlAddImportBill, Statement.RETURN_GENERATED_KEYS);
+            formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            ps = connection.prepareStatement(sqlAddImportBill, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, importBill.getImportDate().format(formatter));
             ps.setInt(2, importBill.getSaleOff());
             ps.setNString(3, importBill.getPaymentMethod());

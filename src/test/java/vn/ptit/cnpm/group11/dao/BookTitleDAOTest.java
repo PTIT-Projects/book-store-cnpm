@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import vn.ptit.cnpm.group11.model.BookTitle;
 import java.util.ArrayList;
 
-public class BookTitleDaoTest {
+public class BookTitleDAOTest {
     private final BookTitleDAO bookTitleDAO;
 
-    public BookTitleDaoTest() {
+    public BookTitleDAOTest() {
         this.bookTitleDAO = new BookTitleDAO();
     }
 

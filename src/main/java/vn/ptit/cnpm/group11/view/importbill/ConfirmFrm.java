@@ -327,11 +327,15 @@ public class ConfirmFrm extends javax.swing.JFrame implements ActionListener{
                 importBill.setPaymentMethod((String)cmbPaymentMethod.getSelectedItem());
                 
                 ImportBillDAO ibdao = new ImportBillDAO();
-                if (ibdao.confirmImportBookTitle(importBill)) {
-                    JOptionPane.showMessageDialog(this, "Nhập truyện từ nhà cung cấp thành công!");
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Nhập truyện từ nhà cung cấp thất bại!");
+                try {
+                    if (ibdao.confirmImportBookTitle(importBill)) {
+                        JOptionPane.showMessageDialog(this, "Nhập truyện từ nhà cung cấp thành công!");
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Nhập truyện từ nhà cung cấp thất bại!");
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(this, ex.getMessage());
                 }
             }
         }

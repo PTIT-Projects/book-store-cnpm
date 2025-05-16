@@ -17,3 +17,7 @@ DBCC CHECKIDENT ('tblImportedBookTitle', RESEED, 0);
 -- Re-enable foreign key checks
 ALTER TABLE tblImportedBookTitle CHECK CONSTRAINT ALL;
 ALTER TABLE tblImportBill CHECK CONSTRAINT ALL;
+/*
+ALTER TABLE tblImportBill
+ADD CONSTRAINT UQ_ImportBill UNIQUE (import_date, provider_id, user_id, payment_method);
+*/

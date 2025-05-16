@@ -22,11 +22,11 @@ SET IDENTITY_INSERT [dbo].[tblProvider] OFF
 
 
 SET IDENTITY_INSERT [dbo].[tblImportBill] ON 
-INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (1, CAST(N'2025-05-01' AS Date), 100000, N'Chuyển khoản', N'Giảm 100000 cho lần nhập đầu tiên', 1, 1)
-INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (2, CAST(N'2025-05-01' AS Date), 100000, N'Thẻ tín dụng', N'Giảm giá do thanh toán bằng thẻ tín dụng', 1, 2)
-INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (3, CAST(N'2025-05-02' AS Date), 0, N'Tiền mặt', N'', 1, 3)
-INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (4, CAST(N'2025-05-02' AS Date), 0, N'Chuyển khoản', N'', 1, 4)
-INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (5, CAST(N'2025-05-02' AS Date), 0, N'Tiền mặt', N'', 1, 5)
+INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (1, CAST('2025-05-01' AS Date), 100000, N'Chuyển khoản', N'Giảm 100000 cho lần nhập đầu tiên', 1, 1)
+INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (2, CAST('2025-05-01' AS Date), 100000, N'Thẻ tín dụng', N'Giảm giá do thanh toán bằng thẻ tín dụng', 1, 2)
+INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (3, CAST('2025-05-02' AS Date), 0, N'Tiền mặt', N'', 1, 3)
+INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (4, CAST('2025-05-02' AS Date), 0, N'Chuyển khoản', N'', 1, 4)
+INSERT [dbo].[tblImportBill] ([id], [import_date], [sale_off], [payment_method], [note], [user_id], [provider_id]) VALUES (5, CAST('2025-05-02' AS Date), 0, N'Tiền mặt', N'', 1, 5)
 SET IDENTITY_INSERT [dbo].[tblImportBill] OFF
 
 
