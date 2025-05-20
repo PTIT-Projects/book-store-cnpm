@@ -16,12 +16,14 @@ public class BookTitleDAOTest {
     public void testSearchBookTitleStandard() {
         String keyword = "7 viên ngọc rồng tập 6";
         ArrayList<BookTitle> results = bookTitleDAO.searchBookTitleByName(keyword);
+        Assertions.assertNotNull(results);
         Assertions.assertEquals(4, results.size());
     }
     @Test
     public void testSearchBookTitleException() {
         String keyword = "xxx";
         ArrayList<BookTitle> results = bookTitleDAO.searchBookTitleByName(keyword);
+        Assertions.assertNotNull(results);
         Assertions.assertEquals(0, results.size());
     }
 

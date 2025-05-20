@@ -16,12 +16,14 @@ public class ProviderDAOTest {
     public void testSearchProviderStandard() {
         String keyword = "B";
         ArrayList<Provider> results = providerDAO.searchProviderByName(keyword);
+        Assertions.assertNotNull(results);
         Assertions.assertEquals(4, results.size());
     }
     @Test
     public void testSearchProviderException() {
         String keyword = "xxx";
         ArrayList<Provider> results = providerDAO.searchProviderByName(keyword);
+        Assertions.assertNotNull(results);
         Assertions.assertEquals(0, results.size());
     }
 
