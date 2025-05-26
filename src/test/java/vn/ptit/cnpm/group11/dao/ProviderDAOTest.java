@@ -21,6 +21,9 @@ public class ProviderDAOTest {
         for (Provider provider : results) {
             Assertions.assertTrue(provider.getName().toLowerCase().contains(keyword.toLowerCase()));
         }
+        for (Provider provider : results) {
+            Assertions.assertNotEquals(4, provider.getId());
+        }
     }
     @Test
     public void testSearchProviderException() {

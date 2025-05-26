@@ -23,6 +23,9 @@ public class BookTitleDAOTest {
         for (BookTitle bookTitle : results) {
             Assertions.assertTrue(bookTitle.getName().toLowerCase().contains(keyword.toLowerCase()));
         }
+        for (BookTitle bookTitle : results) {
+            Assertions.assertNotEquals(3, bookTitle.getId());
+        }
     }
     @Test
     public void testSearchBookTitleException() {
