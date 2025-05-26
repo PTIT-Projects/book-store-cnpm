@@ -18,6 +18,9 @@ public class ProviderDAOTest {
         ArrayList<Provider> results = providerDAO.searchProviderByName(keyword);
         Assertions.assertNotNull(results);
         Assertions.assertEquals(4, results.size());
+        for (Provider provider : results) {
+            Assertions.assertTrue(provider.getName().toLowerCase().contains(keyword.toLowerCase()));
+        }
     }
     @Test
     public void testSearchProviderException() {
@@ -30,16 +33,27 @@ public class ProviderDAOTest {
     @Test
     public void testAddProviderStandard() throws Exception {
         Provider provider = new Provider();
-        provider.setName("Test");
+        String key = "Test";
+        provider.setName(key);
         provider.setAddress("Địa chỉ test");
         provider.setEmail("Email test");
         provider.setPhoneNumber("123");
         boolean isAdded = providerDAO.addNewProvider(provider);
         Assertions.assertTrue(isAdded);
+
+        isAdded = false;
+        ArrayList<Provider> providers = providerDAO.searchProviderByName(key);
+        for (Provider x : providers) {
+            if (x.equals(provider)) {
+                isAdded = true;
+                break;
+            }
+        }
+        Assertions.assertTrue(isAdded);
     }
 
     @Test
-    public void testAddProviderException1() throws Exception {
+    public void testAddProviderException1() {
         Provider provider = new Provider();
         provider.setName("An B");
         provider.setAddress("Thanh Xuân, Hà Nội");

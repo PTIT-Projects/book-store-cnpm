@@ -7,7 +7,7 @@ SET IDENTITY_INSERT [dbo].[tblBookTitle] ON
 INSERT [dbo].[tblBookTitle] ([id], [name], [author], [publication_year], [publisher], [unit_price]) VALUES (1, N'7 viên ngọc rồng tập 6', N'Akira Toriyama', 2023, N'Kim Đồng', 30000)
 INSERT [dbo].[tblBookTitle] ([id], [name], [author], [publication_year], [publisher], [unit_price]) VALUES (2, N'7 viên ngọc rồng tập 60', N'Akira Toriyama', 2023, N'Kim Đồng', 30000)
 INSERT [dbo].[tblBookTitle] ([id], [name], [author], [publication_year], [publisher], [unit_price]) VALUES (3, N'7 viên ngọc rồng tập 7', N'Akira Toriyama', 2023, N'Kim Đồng', 30000)
-INSERT [dbo].[tblBookTitle] ([id], [name], [author], [publication_year], [publisher], [unit_price]) VALUES (4, N'Ngoại truyện 7 viên ngọc rồng tập 66', N'Akira Toriyama', 2024, N'Kim Đồng', 40000)
+INSERT [dbo].[tblBookTitle] ([id], [name], [author], [publication_year], [publisher], [unit_price]) VALUES (4, N'Ngoại truyện 7 viên ngọc rồng tập 60', N'Akira Toriyama', 2024, N'Kim Đồng', 40000)
 INSERT [dbo].[tblBookTitle] ([id], [name], [author], [publication_year], [publisher], [unit_price]) VALUES (5, N'Ngoại truyện 7 viên ngọc rồng tập 6', N'Akira Toriyama', 2024, N'Kim Đồng', 40000)
 SET IDENTITY_INSERT [dbo].[tblBookTitle] OFF
 

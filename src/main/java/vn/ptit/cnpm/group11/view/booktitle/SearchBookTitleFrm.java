@@ -178,7 +178,7 @@ public class SearchBookTitleFrm extends javax.swing.JFrame implements ActionList
             if (e.getSource().equals(btnSearchBookTitle)) {
                 if (txtBookTitleName.getText() != null) {
                     String key = txtBookTitleName.getText().trim();
-                    if (key.isBlank() || key.isEmpty()) {
+                    if (key.isBlank()) {
                         return;
                     }
                     BookTitleDAO bookTitleDAO = new BookTitleDAO();

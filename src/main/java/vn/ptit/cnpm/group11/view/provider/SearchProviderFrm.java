@@ -177,7 +177,7 @@ public class SearchProviderFrm extends javax.swing.JFrame implements ActionListe
             if (e.getSource().equals(btnSearchProvider)) {
                 if (txtProviderName.getText() != null) {
                     String key = txtProviderName.getText().trim();
-                    if (key.isBlank() || key.isEmpty()) {
+                    if (key.isBlank()) {
                         return;
                     }
                     ProviderDAO providerDAO = new ProviderDAO();

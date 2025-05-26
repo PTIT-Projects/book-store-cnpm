@@ -3,6 +3,8 @@ package vn.ptit.cnpm.group11.dao;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import vn.ptit.cnpm.group11.model.BookTitle;
+import vn.ptit.cnpm.group11.model.Provider;
+
 import java.util.ArrayList;
 
 public class BookTitleDAOTest {
@@ -18,6 +20,9 @@ public class BookTitleDAOTest {
         ArrayList<BookTitle> results = bookTitleDAO.searchBookTitleByName(keyword);
         Assertions.assertNotNull(results);
         Assertions.assertEquals(4, results.size());
+        for (BookTitle bookTitle : results) {
+            Assertions.assertTrue(bookTitle.getName().toLowerCase().contains(keyword.toLowerCase()));
+        }
     }
     @Test
     public void testSearchBookTitleException() {
@@ -30,12 +35,23 @@ public class BookTitleDAOTest {
     @Test
     public void testAddBookTitleStandard() throws Exception {
         BookTitle bookTitle = new BookTitle();
-        bookTitle.setName("Test");
+        String key = "Test";
+        bookTitle.setName(key);
         bookTitle.setAuthor("Tác giả test");
         bookTitle.setPublisher("NXB test");
         bookTitle.setPublicationYear(2025);
         bookTitle.setUnitPrice(50000);
         boolean isAdded = bookTitleDAO.addNewBookTitle(bookTitle);
+        Assertions.assertTrue(isAdded);
+
+        isAdded = false;
+        ArrayList<BookTitle> bookTitles = bookTitleDAO.searchBookTitleByName(key);
+        for (BookTitle bt : bookTitles) {
+            if (bt.equals(bookTitle)) {
+                isAdded = true;
+                break;
+            }
+        }
         Assertions.assertTrue(isAdded);
     }
 
