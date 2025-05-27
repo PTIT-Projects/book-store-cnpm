@@ -34,7 +34,6 @@ public class EnterQuantityFrm extends javax.swing.JFrame implements ActionListen
         lblPublisherRes.setText(bookTitle.getPublisher());
         lblPublicationYearRes.setText(String.valueOf(bookTitle.getPublicationYear()));
         lblUnitPriceRes.setText(String.valueOf(bookTitle.getUnitPrice()));
-        
         addActionListener();
     }
 
