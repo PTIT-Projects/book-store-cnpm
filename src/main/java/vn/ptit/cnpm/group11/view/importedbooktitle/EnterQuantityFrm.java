@@ -257,9 +257,8 @@ public class EnterQuantityFrm extends javax.swing.JFrame implements ActionListen
                 ibt.setUnitPrice(bookTitle.getUnitPrice());
                 ibt.setQuantity((int)spnQuantity.getValue());
                 ibt.setBookTitle(bookTitle);
-                ArrayList<ImportedBookTitle> ibts = importBill.getImportedBookTitleList();
                 boolean isContain = false;
-                for (ImportedBookTitle importedBookTitle : ibts) {
+                for (ImportedBookTitle importedBookTitle : importBill.getImportedBookTitleList()) {
                     if (importedBookTitle.getBookTitle().equals(bookTitle)) {
                         importedBookTitle.setQuantity((int)spnQuantity.getValue());
                         isContain = true;
@@ -267,10 +266,8 @@ public class EnterQuantityFrm extends javax.swing.JFrame implements ActionListen
                     }
                 }
                 if (!isContain) {
-                    ibts.add(ibt);
+                    importBill.getImportedBookTitleList().add(ibt);
                 }
-                importBill.setImportedBookTitleList(ibts);
-                
                 ImportedBookTitleListFrm ibtlf = new ImportedBookTitleListFrm(importBill);
                 ibtlf.setVisible(true);
                 this.dispose();

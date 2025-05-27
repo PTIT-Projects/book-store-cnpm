@@ -46,33 +46,6 @@ public class ImportBillDAO extends DAO{
         (quantity, unit_price, import_bill_id, book_title_id)
         VALUES (?, ?, ?, ?);
         """;
-//        ProviderDAO providerDAO = new ProviderDAO();
-//        ArrayList<Provider> providers = providerDAO.searchProviderByName(importBill.getProvider().getName());
-//        boolean hasProvider = false;
-//        for (Provider p : providers) {
-//            if (p.equals(importBill.getProvider())) {
-//                hasProvider = true;
-//                break;
-//            }
-//        }
-//        if (!hasProvider) {
-//            throw new Exception("Không thể tạo được hoá đơn khi nhà cung cấp không tồn tại!");
-//        }
-//        BookTitleDAO bookTitleDAO = new BookTitleDAO();
-//        for (ImportedBookTitle ibt : importBill.getImportedBookTitleList()) {
-//            boolean hasBookTitle = false;
-//            ArrayList<BookTitle> bookTitles = bookTitleDAO.searchBookTitleByName(ibt.getBookTitle().getName());
-//            for (BookTitle bt : bookTitles) {
-//                if (bt.equals(ibt.getBookTitle())) {
-//                    hasBookTitle = true;
-//                    break;
-//                }
-//            }
-//            if (!hasBookTitle) {
-//                throw new Exception("Không thể tạo được hoá đơn khi có đầu truyện không tồn tại!");
-//            }
-//        }
-
         boolean isSuccess = true;
         try {
             connection.setAutoCommit(false);
