@@ -193,6 +193,7 @@ public class ImportedBookTitleListFrm extends javax.swing.JFrame implements Acti
                         && column >= 0) {
                     ImportedBookTitle ibt = ibts.get(row);
                     EnterQuantityFrm enterQuantityFrm = new EnterQuantityFrm(importBill, ibt.getBookTitle());
+                    enterQuantityFrm.setEditMode(true);
                     enterQuantityFrm.setVisible(true);
                     ImportedBookTitleListFrm.this.dispose();
                 }

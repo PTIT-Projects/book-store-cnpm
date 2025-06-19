@@ -18,20 +18,22 @@ import vn.ptit.cnpm.group11.model.ImportedBookTitle;
  */
 public class ImportBillDAO extends DAO{
     public boolean confirmImportBookTitle(ImportBill importBill) throws Exception {
-        String sqlCheck = """
-            SELECT COUNT(*) FROM tblImportBill
-            WHERE import_date = ? AND provider_id = ? AND user_id = ? AND payment_method = ?
-        """;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        PreparedStatement ps = connection.prepareStatement(sqlCheck);
-        ps.setString(1, importBill.getImportDate().format(formatter));
-        ps.setInt(2, importBill.getProvider().getId());
-        ps.setInt(3, importBill.getUser().getId());
-        ps.setNString(4, importBill.getPaymentMethod());
-        ResultSet rs = ps.executeQuery();
-        if (rs.next() && rs.getInt(1) > 0) {
-            throw new Exception("Hóa đơn nhập đã tồn tại!");
-        }
+//        String sqlCheck = """
+//            SELECT COUNT(*) FROM tblImportBill
+//            WHERE import_date = ? AND provider_id = ? AND user_id = ? AND payment_method = ? AND sale_off = ?
+//        """;
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+//        PreparedStatement ps = connection.prepareStatement(sqlCheck);
+//        ps.setString(1, importBill.getImportDate().format(formatter));
+//        ps.setInt(2, importBill.getProvider().getId());
+//        ps.setInt(3, importBill.getUser().getId());
+//        ps.setNString(4, importBill.getPaymentMethod());
+//        ps.setInt(5, importBill.getSaleOff());
+//        ResultSet rs = ps.executeQuery();
+//        if (rs.next() && rs.getInt(1) > 0) {
+//            throw new Exception("Hóa đơn nhập đã tồn tại!");
+//        }
 
         String sqlAddImportBill =
         """
@@ -46,6 +48,7 @@ public class ImportBillDAO extends DAO{
         (quantity, unit_price, import_bill_id, book_title_id)
         VALUES (?, ?, ?, ?);
         """;
+        PreparedStatement ps;
         boolean isSuccess = true;
         try {
             connection.setAutoCommit(false);

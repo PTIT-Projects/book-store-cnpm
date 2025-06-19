@@ -257,9 +257,14 @@ public class EnterQuantityFrm extends javax.swing.JFrame implements ActionListen
                 ibt.setQuantity((int)spnQuantity.getValue());
                 ibt.setBookTitle(bookTitle);
                 boolean isContain = false;
+                boolean isEdit = (boolean) btnConfirm.getClientProperty("editMode");
                 for (ImportedBookTitle importedBookTitle : importBill.getImportedBookTitleList()) {
                     if (importedBookTitle.getBookTitle().equals(bookTitle)) {
-                        importedBookTitle.setQuantity((int)spnQuantity.getValue());
+                        if (!isEdit) {
+                            importedBookTitle.setQuantity(importedBookTitle.getQuantity() + (int)spnQuantity.getValue());
+                        } else {
+                            importedBookTitle.setQuantity((int)spnQuantity.getValue());
+                        }
                         isContain = true;
                         break;
                     }
@@ -276,5 +281,8 @@ public class EnterQuantityFrm extends javax.swing.JFrame implements ActionListen
     private void addActionListener() {
         btnConfirm.addActionListener(this);
         btnCancel.addActionListener(this);
+    }
+    public void setEditMode(boolean editMode) {
+        btnConfirm.putClientProperty("editMode", editMode);
     }
 }

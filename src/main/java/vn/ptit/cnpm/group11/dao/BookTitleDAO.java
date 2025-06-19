@@ -44,11 +44,21 @@ public class BookTitleDAO extends DAO{
         return bookTitles;
     }
     public boolean addNewBookTitle(BookTitle bookTitle) throws Exception {
-        ArrayList<BookTitle> bookTitles = this.searchBookTitleByName(bookTitle.getName());
-        for (BookTitle bt : bookTitles) {
-            if (bt.equals(bookTitle)) {
-                throw new Exception("Đầu truyện đã tồn tại!");
-            }
+//        ArrayList<BookTitle> bookTitles = this.searchBookTitleByName(bookTitle.getName());
+//        for (BookTitle bt : bookTitles) {
+//            if (bt.equals(bookTitle)) {
+//                throw new Exception("Đầu truyện đã tồn tại!");
+//            }
+//        }
+        String sqlCheck = "SELECT COUNT(*) FROM tblBookTitle WHERE name = ? AND author = ? AND publication_year = ? AND publisher = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlCheck);
+        preparedStatement.setNString(1, bookTitle.getName());
+        preparedStatement.setNString(2, bookTitle.getAuthor());
+        preparedStatement.setInt(3, bookTitle.getPublicationYear());
+        preparedStatement.setNString(4, bookTitle.getPublisher());
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next() && rs.getInt(1) > 0) {
+            throw new Exception("Đầu truyện đã tồn tại!");
         }
         int isAdded = 0;
         String sql = 
@@ -58,7 +68,7 @@ public class BookTitleDAO extends DAO{
         (?, ?, ?, ?, ?)
         """;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setNString(1, bookTitle.getName());
             preparedStatement.setNString(2, bookTitle.getAuthor());
             preparedStatement.setInt(3, bookTitle.getPublicationYear());

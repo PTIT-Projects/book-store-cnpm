@@ -43,11 +43,13 @@ public class ProviderDAO extends DAO{
         return providers;
     }
     public boolean addNewProvider(Provider provider) throws Exception {
-        ArrayList<Provider> providers = this.searchProviderByName(provider.getName());
-        for (Provider p : providers) {
-            if (p.equals(provider)) {
-                throw new Exception("Nhà cung cấp đã tồn tại!");
-            }
+        String sqlCheck = "SELECT COUNT(*) FROM tblProvider WHERE email = ? OR phone_number = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlCheck);
+        preparedStatement.setString(1, provider.getEmail());
+        preparedStatement.setString(2, provider.getPhoneNumber());
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next() && rs.getInt(1) > 0) {
+            throw new Exception("Email hoặc SĐT trùng với nhà cung cấp đã tồn tại trên hệ thống!");
         }
         int isAdded = 0;
         String sql = 
@@ -57,7 +59,7 @@ public class ProviderDAO extends DAO{
         (?, ?, ?, ?, ?)
         """;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setNString(1, provider.getName());
             preparedStatement.setNString(2, provider.getAddress());
             preparedStatement.setString(3, provider.getEmail());

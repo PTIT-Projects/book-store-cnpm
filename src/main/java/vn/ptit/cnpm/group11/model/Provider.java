@@ -66,14 +66,15 @@ public class Provider {
         this.note = note;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Provider provider)) return false;
-        return Objects.equals(name, provider.name) && Objects.equals(address, provider.address) && Objects.equals(email, provider.email) && Objects.equals(phoneNumber, provider.phoneNumber);
+        return Objects.equals(email, provider.email) && Objects.equals(phoneNumber, provider.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, address, email, phoneNumber);
+        return Objects.hash(email, phoneNumber);
     }
 }

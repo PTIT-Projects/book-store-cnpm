@@ -226,6 +226,7 @@ public class SearchBookTitleFrm extends javax.swing.JFrame implements ActionList
                         && column >= 0) {
                     BookTitle bookTitle = bookTitles.get(row);
                     EnterQuantityFrm enterQuantityFrm = new EnterQuantityFrm(importBill, bookTitle);
+                    enterQuantityFrm.setEditMode(false);
                     enterQuantityFrm.setVisible(true);
                     SearchBookTitleFrm.this.dispose();
                 }
